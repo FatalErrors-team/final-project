@@ -95,12 +95,8 @@ public class AlunoService implements IAlunoService {
             alunoEntity.setNota01(alunoDto.getNota01());
             alunoEntity.setNota02(alunoDto.getNota02());
             alunoEntity.setNotaApresentacao(alunoDto.getNotaApresentacao());
-            alunoEntity.setMedia((alunoDto.getNota01()+alunoDto.getNota02()+alunoDto.getNotaApresentacao())/3);
-            if (alunoEntity.getMedia() < 6){
-                alunoEntity.setConceito(Conceito.REPROVADO);
-            }else {
-                alunoEntity.setConceito(Conceito.APROVADO);
-            }
+            alunoEntity.setMedia(alunoDto.calculaMedia());
+            alunoEntity.setConceito(alunoDto.mostrarConceito());
             alunoEntity.setEndereco(alunoDto.getEndereco());
             alunoEntity.setCurso(alunoDto.getCurso());
 

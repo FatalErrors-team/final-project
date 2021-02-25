@@ -40,4 +40,14 @@ public class AlunoDto {
         this.endereco = entity.getEndereco();
         this.curso = entity.getCurso();
     }
+
+    public Double calculaMedia(){
+        return (this.getNota01() + this.getNota02()+ this.getNotaApresentacao())/3;
+    }
+    public Conceito mostrarConceito(){
+        if (this.calculaMedia() > 5.9){
+            return Conceito.APROVADO;
+        }
+        return Conceito.REPROVADO;
+    }
 }
