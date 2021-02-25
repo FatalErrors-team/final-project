@@ -17,7 +17,6 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String nome;
-
 }
 
 
