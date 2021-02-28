@@ -1,3 +1,4 @@
+import StudentList from '../StudentList'
 import { ReactComponent as MainImage } from './MainImage.svg'
 import './style.css'
 function Home(){
@@ -17,6 +18,8 @@ function Home(){
 
             </div>
             <button className="home-btn">CADASTRAR NOVO ALUNO</button>
+            
+            <StudentList />
         </div>
     )
 }
