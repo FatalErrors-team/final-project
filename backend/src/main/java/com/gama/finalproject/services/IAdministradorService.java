@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 public interface IAdministradorService {
 
-    // public AdministradorDto buscarPorId(Long id);
+    public AdministradorDto buscarPorUsuario(String usuario);
     public Boolean inserir(AdministradorDto administradorDto);
     // public Boolean deletar(Long id);
 
