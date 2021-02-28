@@ -5,17 +5,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+
+@ApiModel(value = "Curso")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Curso {
 
+    @ApiModelProperty(value = "Identificador do curso")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
+
+    @ApiModelProperty(value = "Nome do curso", example = "Ciências da Computação")
     private String nome;
 }
 

@@ -18,6 +18,7 @@ public class SpringFoxConfig {
     public Docket apis() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors.basePackage("com.gama.finalproject"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
@@ -25,7 +26,13 @@ public class SpringFoxConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("Documentaçao de um API de cadastro de Alunos", "Descriçao", "Versao", "Termos de Uso", null,
-                "Licença", "URL da Licença", new ArrayList<>());
+        return new ApiInfo(
+            "Documentaçao da API",
+            "Se trata de uma <b>API Spring Boot criada para gerenciar alunos</b>. Proposta como projeto de conclusão de Java solicitado pelo professor <b>Marcos</b> no treinamento da <b>Gama Academy</b>.",
+            "1.0",
+            "Termos de Uso",
+            null,
+            "Licença",
+            "https://github.com/FatalErrors-team/final-project/blob/main/LICENSE", new ArrayList<>());
     }
 }

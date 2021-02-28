@@ -4,27 +4,50 @@ import com.gama.finalproject.entities.Aluno;
 import com.gama.finalproject.entities.Conceito;
 import com.gama.finalproject.entities.Curso;
 import com.gama.finalproject.entities.Endereco;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+@ApiModel(value = "Aluno")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AlunoDto {
 
+    @ApiModelProperty(value = "Identificador do endereço", allowEmptyValue = true)
     private Long id;
+
+    @ApiModelProperty(value = "Nome do aluno", example = "fulaninho")
     private String nome;
+
+    @ApiModelProperty(value = "Email do aluno", example = "fulaninho@email.com")
     private String email;
+
+    @ApiModelProperty(value = "Telefone do aluno", example = "990909090")
     private String telefone;
+
+    @ApiModelProperty(value = "Primeira nota do aluno", example = "10")
     private Double nota01;
+
+    @ApiModelProperty(value = "Segunda nota do aluno", example = "10")
     private Double nota02;
+
+    @ApiModelProperty(value = "Nota da apresentação do aluno")
     private Double notaApresentacao;
+
+    @ApiModelProperty(value = "Média do aluno", example = "10")
     private Double media;
+
+    @ApiModelProperty(value = "Conceito do aluno")
     private Conceito conceito;
 
+    @ApiModelProperty(value = "Endereço do aluno")
     private Endereco endereco;
+
+    @ApiModelProperty(value = "Curso do aluno")
     private Curso curso;
 
     public AlunoDto(Aluno entity){
