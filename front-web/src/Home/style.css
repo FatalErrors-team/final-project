@@ -1,0 +1,40 @@
+.home-container{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 80%;
+}
+
+.home-content{
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    height: 400px;
+}
+
+
+.main-image{
+    margin: 0 auto;
+}
+.main-text{
+    font-size: 50px;
+    color: #FF725E;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.secondary-text{
+    font-size: 25px;
+    font-weight: 100;
+    margin-top: 5px;
+}
+.home-btn{
+    width: 300px;
+    height: 70px;
+    background-color: #FF725E;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+.home-btn:hover{
+    background-color: #fd9789;
+
+}
