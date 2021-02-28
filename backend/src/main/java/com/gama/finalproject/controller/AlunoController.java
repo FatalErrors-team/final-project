@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiResponse;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
@@ -57,7 +59,7 @@ public class AlunoController {
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PostMapping(produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Response<Boolean>> incluir(@ApiParam(value = "Aluno no formato JSON a ser cadastrado", required = true) @RequestBody AlunoDto alunoDto){
+    public ResponseEntity<Response<Boolean>> incluir(@Valid @ApiParam(value = "Aluno no formato JSON a ser cadastrado", required = true) @RequestBody AlunoDto alunoDto){
         Response<Boolean> response = new Response<>();
         response.setData(this.service.inserir(alunoDto));
         response.setStatusCode(HttpStatus.CREATED.value());
@@ -71,7 +73,7 @@ public class AlunoController {
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PutMapping(produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Response<Boolean>> alterar(@ApiParam(value = "Aluno no formato JSON a ser cadastrado") @RequestBody AlunoDto alunoDto) {
+    public ResponseEntity<Response<Boolean>> alterar(@Valid @ApiParam(value = "Aluno no formato JSON a ser cadastrado") @RequestBody AlunoDto alunoDto) {
         Response<Boolean> response = new Response<>();
         response.setData(this.service.atualizar(alunoDto));
         response.setStatusCode(HttpStatus.OK.value());
