@@ -10,18 +10,16 @@ function Card({ nome, curso, conceito }) {
     } else {
       setHidden(true);
     }
-  };
+  }
   return (
     <>
       <div className="card-main-description">
-        <h3>{nome}</h3>
-        <h3>{curso}</h3>
-        <h3>{conceito}</h3>
-        <button className="card-btn" onClick={toogleDescription}>
-          {hidden ? "MOSTRAR MENOS" : "MOSTRAR MAIS"}
-        </button>
+        <h3>nome</h3>
+        <h3>curso</h3>
+        <h3>conceito</h3>
+        <button className="card-btn" onClick={toogleDescription}>{hidden ? "MOSTRAR MENOS" : "MOSTRAR MAIS"}</button>
       </div>
-      {hidden ? (
+      { hidden ?
         <div className="complementar-description">
           <div className="complementar-description-row">
             <h3>Nota Prova 1</h3>
@@ -40,12 +38,11 @@ function Card({ nome, curso, conceito }) {
             <h3>7.5</h3>
           </div>
           <button className="btn-exclude">EXCLUIR</button>
-          <button className="btn-update">ATUALIZAR</button>
+          <button className="btn-update">EDITAR</button>
         </div>
-      ) : (
-        ""
-      )}
+        : ''}
     </>
-  );
+  )
+
 }
 export default Card;

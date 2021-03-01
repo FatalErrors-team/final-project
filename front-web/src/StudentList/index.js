@@ -12,14 +12,14 @@ function StudentList({ estudantes }) {
       {estudantes.map((estudante) => {
         return <Card nome={estudante.nome} curso={estudante.curso} conceito={estudante.conceito} />
       })}
-      {/* <Card nome="Nome" curso="Curso" conceito="Conceito" />
       <Card nome="Nome" curso="Curso" conceito="Conceito" />
       <Card nome="Nome" curso="Curso" conceito="Conceito" />
       <Card nome="Nome" curso="Curso" conceito="Conceito" />
       <Card nome="Nome" curso="Curso" conceito="Conceito" />
       <Card nome="Nome" curso="Curso" conceito="Conceito" />
       <Card nome="Nome" curso="Curso" conceito="Conceito" />
-      <Card nome="Nome" curso="Curso" conceito="Conceito" /> */}
+      <Card nome="Nome" curso="Curso" conceito="Conceito" />
+      <Card nome="Nome" curso="Curso" conceito="Conceito" />
     </div>
   );
 }

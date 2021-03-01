@@ -1,14 +1,14 @@
 import StudentList from "../StudentList";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ReactComponent as MainImage } from "./MainImage.svg";
 import "./style.css";
 import { Component } from "react";
 
 class Home extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {estudantes: []}
+    this.state = { estudantes: [] };
     localStorage.setItem(
       "token",
       "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvIjoiYnVkaW5oYSJ9.xRP1O67djDGd4Qv1nGLuSyW4GtQQk006ZHUHtFqGiSo"
@@ -51,8 +51,9 @@ class Home extends Component {
           </div>
           <MainImage className="main-image" />
         </div>
-        <button className="home-btn">CADASTRAR NOVO ALUNO</button>
-
+        <Link to="/cadastro-de-alunos">
+          <button className="home-btn">CADASTRAR NOVO ALUNO</button>
+        </Link>
         <StudentList estudantes={this.state.estudantes} />
       </div>
     );

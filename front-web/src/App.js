@@ -1,6 +1,4 @@
-import Footer from "./Footer";
-import Home from "./Home";
-import NavBar from "./NavBar";
+import Routes from "./Routes";
 
 
 function App() {
@@ -14,9 +12,7 @@ function App() {
   return (
     <div className="App">
       <>
-        <NavBar />
-        <Home />
-        <Footer />
+        <Routes />
       </>
     </div>
   );

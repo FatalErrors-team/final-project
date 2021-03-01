@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom'
 import './style.css'
 
 function NavBar(){
     return(
         <div className="navbar-container">
             <ul className="link-container">
-                <li>HOME</li>
-                <li> CADASTRAR ALUNO</li>
+                <li><Link to="/">HOME</Link></li>
+                <li><Link to="/cadastro-de-alunos">CADASTRAR ALUNO</Link></li>
                 <li>LISTA DE ALUNOS</li>
             </ul>
         </div>
