@@ -30,7 +30,7 @@ public class AlunoController {
         @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
-    @GetMapping(produces = "application/json", consumes = "application/json")
+    @GetMapping(produces = "application/json")
     public ResponseEntity<Response<List<AlunoDto>>> listar(){
         Response<List<AlunoDto>> response = new Response<>();
         response.setData(this.service.listar());
@@ -44,7 +44,7 @@ public class AlunoController {
         @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
-    @GetMapping(value = "/{id}", produces = "application/json", consumes = "application/json")
+    @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Response<AlunoDto>> buscarPorId(@ApiParam(value = "Id do usuário a ser buscado", required = true, example = "0") @PathVariable Long id){
         Response<AlunoDto> response = new Response<>();
         response.setData(this.service.buscarPorId(id));
@@ -58,7 +58,7 @@ public class AlunoController {
         @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
-    @PostMapping(produces = "application/json", consumes = "application/json")
+    @PostMapping
     public ResponseEntity<Response<Boolean>> incluir(@Valid @ApiParam(value = "Aluno no formato JSON a ser cadastrado", required = true) @RequestBody AlunoDto alunoDto){
         Response<Boolean> response = new Response<>();
         response.setData(this.service.inserir(alunoDto));
@@ -72,7 +72,7 @@ public class AlunoController {
         @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
-    @PutMapping(produces = "application/json", consumes = "application/json")
+    @PutMapping("{id}")
     public ResponseEntity<Response<Boolean>> alterar(@Valid @ApiParam(value = "Aluno no formato JSON a ser cadastrado") @RequestBody AlunoDto alunoDto) {
         Response<Boolean> response = new Response<>();
         response.setData(this.service.atualizar(alunoDto));

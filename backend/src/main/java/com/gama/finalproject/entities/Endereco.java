@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 public class Endereco {
 
-    @ApiModelProperty(value = "Identificador do endereço", allowEmptyValue = true)
+    @ApiModelProperty(value = "Identificador do endereço", allowEmptyValue = true, hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
