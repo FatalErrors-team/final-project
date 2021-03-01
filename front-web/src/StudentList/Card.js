@@ -40,10 +40,8 @@ function Card() {
                         <h3>7.5</h3>
                     </div>
                     <button className="btn-exclude">EXCLUIR</button>
-                    <button className="btn-update">ATUALIZAR</button>
+                    <button className="btn-update">EDITAR</button>
                 </div>
-
-
                 : ''}
         </>
     )

@@ -2,6 +2,7 @@
     margin: 0 auto;
     margin-top: 50px;
     width: 80%;
+    min-width: 800px;
 }
 
 .home-content{
@@ -32,9 +33,11 @@
     border: none;
     border-radius: 10px;
     font-size: 20px;
+    text-decoration: none;
     color: #fff;
+    cursor: pointer;
 }
+
 .home-btn:hover{
     background-color: #fd9789;
-
 }

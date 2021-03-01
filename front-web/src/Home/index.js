@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import StudentList from '../StudentList'
 import { ReactComponent as MainImage } from './MainImage.svg'
 import './style.css'
@@ -17,7 +18,7 @@ function Home(){
                 <MainImage className="main-image" />
 
             </div>
-            <button className="home-btn">CADASTRAR NOVO ALUNO</button>
+            <Link to="/cadastro-de-alunos"><button className="home-btn">CADASTRAR NOVO ALUNO</button></Link>
             
             <StudentList />
         </div>
