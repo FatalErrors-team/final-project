@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 public class Curso {
 
-    @ApiModelProperty(value = "Identificador do curso")
+    @ApiModelProperty(value = "Identificador do curso", hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -95,6 +95,7 @@ public class AlunoService implements IAlunoService {
             alunoEntity.setNota01(alunoDto.getNota01());
             alunoEntity.setNota02(alunoDto.getNota02());
             alunoEntity.setNotaApresentacao(alunoDto.getNotaApresentacao());
+            alunoEntity.setNotaTrabalho(alunoDto.getNotaTrabalho());
             alunoEntity.setMedia(alunoDto.calculaMedia());
             alunoEntity.setConceito(alunoDto.mostrarConceito());
             alunoEntity.setEndereco(alunoDto.getEndereco());
