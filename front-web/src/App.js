@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Home from "./Home";
 import NavBar from "./NavBar";
 
@@ -5,8 +6,11 @@ import NavBar from "./NavBar";
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Home />
+      <>
+        <NavBar />
+        <Home />
+        <Footer />
+      </>
     </div>
   );
 }

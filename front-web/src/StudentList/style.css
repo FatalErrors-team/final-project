@@ -30,5 +30,47 @@
 }
 .card-btn:hover{
     background-color: #5f8f9b;
+}
+.complementar-description{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #C7C7C7;
 
+}
+
+.complementar-description-row{
+    display: grid;
+    grid-template-columns:  40% 60%;
+}
+.complementar-description-row h3{
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 10px;
+
+}
+.total-text{
+    display: grid;
+    grid-template-columns:  40% 60%;
+    font-weight: bold;
+    margin-left: 15px;
+}
+.btn-exclude{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FF5E5E;
+    color: #fff;
+    border: none;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+.btn-update{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 2px solid #FF5E5E;
+    color: #FF5E5E;
+    margin: 0 auto;
+    margin-top: 8px;
+    margin-left: 20px;
 }
