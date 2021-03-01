@@ -4,7 +4,7 @@ import "./style.css";
 
 function Autenticacao() {
   return (
-    <div className="container">
+    <div className="container__autenticacao">
       <Box />
     </div>
   );

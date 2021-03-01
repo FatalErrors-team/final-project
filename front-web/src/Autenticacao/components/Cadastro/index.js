@@ -22,11 +22,10 @@ function Cadastro(props) {
 
   function cadastrar(e) {
     e.preventDefault();
-    console.log(formData);
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8080/cadastro',
+      url: 'https://boiling-river-79785.herokuapp.com/cadastro',
       data: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json',

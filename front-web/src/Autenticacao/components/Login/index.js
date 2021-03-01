@@ -21,11 +21,10 @@ function Login(props) {
 
   function logar(e) {
     e.preventDefault();
-    console.log(formData);
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8080/login',
+      url: 'https://boiling-river-79785.herokuapp.com/login',
       data: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +32,8 @@ function Login(props) {
       .then((response) => {
         if (response.status === 200) {
           setMessage({ status: true, text: "Você será redirecionado!" });
-          localStorage.setItem("token", response.headers.authorization)
+          localStorage.setItem("token", response.headers.authorization);
+          window.location.href = "http://localhost:3000/"
         } else {
           setMessage({ status: false, text: "Verifique suas credenciais!" });
         }

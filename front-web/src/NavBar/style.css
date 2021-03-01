@@ -2,6 +2,7 @@
     background-color: #E0E0E0;
     height: 75px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -18,4 +19,14 @@
 .navbar-container ul li a{
     text-decoration: none;
     color: #455A64;
+    cursor: pointer;
+}
+
+.usuario__container {
+    margin-right: 10px;
+}
+
+.usuario__container a {
+    cursor: pointer;
+    text-decoration: underline;
 }

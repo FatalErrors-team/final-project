@@ -13,7 +13,8 @@
 
 .form-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     background-color: #fff;
     width: 80%;
     margin: 0 auto;
@@ -37,6 +38,7 @@
     height: 40px;
 }
 .input-item{
+    flex: 1;
     height: 40px;
     margin: 10px;
     font-size: 17px;
