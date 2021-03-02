@@ -29,7 +29,7 @@ function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 				Authorization: localStorage.getItem("token")
 			}
 		});
-		if (response.status == 204) {
+		if (response.status === 204) {
 			funcaoAtualizar(setEstudantes);
 		}
 	}
