@@ -234,7 +234,7 @@ function FormPage() {
 						type="number"
 						id="notaTrabalho"
 						name="notaTrabalho"
-						value={ formData.notaApresentacao }
+						value={ formData.notaTrabalho }
 						onChange={ handleChange }
 						required
 						placeholder="Nota do Trabalho"
