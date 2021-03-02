@@ -5,48 +5,50 @@ import { ReactComponent as MainImage } from "./MainImage.svg";
 import "./style.css";
 import { useState, useEffect } from "react";
 
-async function obterAlunos(setEstudantes) {
-  const response = await axios({
-    method: "GET",
-    url: "http://localhost:8080/alunos",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
-    },
-  });
-  if (response.status === 200) {
-    setEstudantes(response.data.data);
-  } else {
-    console.log({ status: false, text: "Houve algum erro!" });
-  }
-}
-
 function Home() {
-  const [estudantes, setEstudantes] = useState([]);
+	const [estudantes, setEstudantes] = useState([]);
 
-  useEffect(() => {
-    obterAlunos(setEstudantes);
-  }, []);
+	async function obterAlunos(setEstudantes) {
+		const response = await axios({
+			method: "GET",
+			url: "https://boiling-river-79785.herokuapp.com/",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: localStorage.getItem("token"),
+			},
+		});
+		if (response.status === 200) {
+			setEstudantes(response.data.data);
+		} else {
+			console.log({ status: false, text: "Houve algum erro!" });
+		}
+	}
 
-  return (
-    <div className="home-container">
-      <div className="home-content">
-        <div className="description-container">
-          <h1 className="main-text">Home Studies</h1>
-          <h2 className="secondary-text">Fatalerrors</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur </p>
-          <p>adipiscing elit, sed do eiusmod tempor </p>
-          <p>incididunt ut labore et dolore magna aliqua. </p>
-          <p>Lorem ipsum dolor sit amet, consectetur </p>
-          <p>adipiscing elit, sed do eiusmod tempor </p>
-        </div>
-        <MainImage className="main-image" />
-      </div>
-      <Link to="/cadastro-de-alunos">
-        <button className="home-btn">CADASTRAR NOVO ALUNO</button>
-      </Link>
-      <StudentList estudantes={estudantes} />
-    </div>
-  );
+
+	useEffect(() => {
+		obterAlunos(setEstudantes);
+		console.log(estudantes)
+	}, []);
+
+	return (
+		<div className="home__container">
+			<div className="home__content">
+				<div className="description__container">
+					<h1 className="main-text">Gama Alunos</h1>
+					<h2 className="secondary-text">Fatalerrors</h2>
+					<p>A Gama Alunos é sua plataforma preferida</p>
+					<p>de gerenciamento de alunos. Somos realmente</p>
+					<p>completo! Temos desde funções mais simples</p>
+					<p>a um time completamente disposto a dar</p>
+					<p>suporte 24 horas. </p>
+				</div>
+				<MainImage className="main-image" />
+			</div>
+			<Link to="/cadastro-de-alunos">
+				<button className="home-btn">Cadastrar Novo Aluno</button>
+			</Link>
+			<StudentList estudantes={estudantes} funcaoAtualizar={obterAlunos} setEstudantes={setEstudantes} />
+		</div>
+	);
 }
 export default Home;

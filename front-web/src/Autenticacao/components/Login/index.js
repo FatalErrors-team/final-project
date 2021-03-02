@@ -50,10 +50,10 @@ function Login(props) {
       <h2 className="form__title">Gama Alunos {props.oculto}</h2>
       <p className="form__subtitle">Realize o login para começar a usar.</p>
       <p className="form__subtitle" style={{ color: message.status ? "#27ae60" : "#e74c3c"}}>{ message.text }</p>
-      <form>
-        <input type="text" name="usuario" placeholder="Usuário" onChange={handleChange}/>
-        <input type="password" name="senha" placeholder="Senha" onChange={handleChange}/>
-        <button className="form__btn-autenticacao" onClick={logar}>Entrar</button>
+      <form onSubmit={logar}>
+        <input type="text" name="usuario" placeholder="Usuário" required onChange={handleChange}/>
+        <input type="password" name="senha" placeholder="Senha" required onChange={handleChange}/>
+        <button className="form__btn-autenticacao">Entrar</button>
       </form>
     </div>
   );

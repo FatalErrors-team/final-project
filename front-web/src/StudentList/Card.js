@@ -1,51 +1,80 @@
 import { useState } from "react";
+import axios from 'axios';
 import "./style.css";
 
-function Card({ estudante }) {
-  const [hidden, setHidden] = useState(false);
-  const toogleDescription = () => {
-    if (hidden) {
-      setHidden(false);
-    } else {
-      setHidden(true);
-    }
-  }
-  return (
-    <>
-      <div className="card-main-description">
-        <h3>{ estudante.nome }</h3>
-        <h3>{ estudante.curso.nome }</h3>
-        <h3>{ estudante.conceito }</h3>
-        <button className="card-btn" onClick={toogleDescription}>{hidden ? "MOSTRAR MENOS" : "MOSTRAR MAIS"}</button>
-      </div>
-      { hidden ?
-        <div className="complementar-description">
-          <div className="complementar-description-row">
-            <h3>Nota Prova 1</h3>
-            <h3>{ estudante.nota01 }</h3>
-          </div>
-          <div className="complementar-description-row">
-            <h3>Nota Prova 2</h3>
-            <h3>{ estudante.nota02 }</h3>
-          </div>
-          <div className="complementar-description-row">
-            <h3>Nota da Apresentaçao</h3>
-            <h3>{ estudante.notaApresentacao }</h3>
-          </div>
-          <div className="complementar-description-row">
-            <h3>Nota do Trabalho</h3>
-            <h3>{ estudante.notaTrabalho }</h3>
-          </div>
-          <div className="total-text">
-            <h3>TOTAL</h3>
-            <h3>{ estudante.media }</h3>
-          </div>
-          <button className="btn-exclude">EXCLUIR</button>
-          <button className="btn-update">EDITAR</button>
-        </div>
-        : ''}
-    </>
-  )
+function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
+
+	console.log(setEstudantes)
+
+	const [hidden, setHidden] = useState(false);
+	const toogleDescription = (e) => {
+		e.preventDefault();
+		if (hidden) {
+			setHidden(false);
+		} else {
+			setHidden(true);
+		}
+	}
+
+	function capitalize(string) {
+		return `${string[0].toUpperCase()}${string.substr(1, string.length).toLowerCase()}`
+	}
+
+	async function deletar(e) {
+		e.preventDefault();
+		const response = await axios({
+			method: "DELETE",
+			url: "https://boiling-river-79785.herokuapp.com/alunos/" + estudante.id,
+			headers: {
+				Authorization: localStorage.getItem("token")
+			}
+		});
+		if (response.status == 204) {
+			funcaoAtualizar(setEstudantes);
+		}
+	}
+
+	return (
+		<>
+			<div className="card-main-description">
+				<div>{ estudante.nome }</div>
+				<div>{ estudante.curso.nome }</div>
+				<div>{ capitalize(estudante.conceito) }</div>
+				<div><button className="card-btn" onClick={toogleDescription}>{hidden ? "MOSTRAR MENOS" : "MOSTRAR MAIS"}</button></div>
+			</div>
+			{ hidden ?
+				<div className="complementar__container">
+					<div className="complementar-description">
+						<div className="complementar-description-row">
+							<h3>Nota Prova 1</h3>
+							<h3>{ estudante.nota01 }</h3>
+						</div>
+						<div className="complementar-description-row">
+							<h3>Nota Prova 2</h3>
+							<h3>{ estudante.nota02 }</h3>
+						</div>
+						<div className="complementar-description-row">
+							<h3>Nota da Apresentaçao</h3>
+							<h3>{ estudante.notaApresentacao }</h3>
+						</div>
+						<div className="complementar-description-row">
+							<h3>Nota do Trabalho</h3>
+							<h3>{ estudante.notaTrabalho }</h3>
+						</div>
+						<div className="total-text">
+							<h3>TOTAL</h3>
+							<h3>{ estudante.media }</h3>
+						</div>
+						<div className="actions">
+							<div>
+							<button className="btn btn-exclude" onClick={deletar}>EXCLUIR</button>
+								<button className="btn btn-update" onClick={ () => window.location.href = "http://localhost:3000/atualizar-aluno/" + estudante.id + "#title" }>EDITAR</button>
+							</div>
+							</div>
+					</div></div>
+					: ''}
+		</>
+	)
 
 }
 export default Card;

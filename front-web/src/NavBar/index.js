@@ -1,29 +1,35 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { ReactComponent as LogoutIcon } from "./logout.svg";
 import "./style.css";
 
-function NavBar() {
-  function logout() {
-    localStorage.clear();
-    window.location.href = "http://localhost:3000/autenticacao";
-  }
+function NavBar({ administrador }) {
 
-  return (
-    <div className="navbar-container">
-      <ul className="link-container">
-        <li>
-          <Link to="/">HOME</Link>
-        </li>
-        <li>
-          <Link to="/cadastro-de-alunos">CADASTRAR ALUNO</Link>
-        </li>
-        <li>LISTA DE ALUNOS</li>
-      </ul>
-      <div className="usuario__container">
-        <p id="usuario">Olá, João Victor. </p>
-        <a onClick={logout}>Logout</a>
-      </div>
-    </div>
-  );
+	function logout() {
+		localStorage.clear();
+		window.location.href = "http://localhost:3000/autenticacao";
+	}
+
+	return (
+		<div className="navbar">
+			<div className="navbar__container">
+				<ul className="link__container">
+					<li>
+						<NavLink to="/" exact>Início</NavLink>
+					</li>
+					<li>
+						<NavLink to="/cadastro-de-alunos">Cadastro</NavLink>
+					</li>
+					<li>
+						<a href="/#lista-de-alunos">Lista de Alunos</a>
+					</li>
+				</ul>
+				<div className="usuario__container">
+					<p id="usuario">Olá, { administrador.nomeCompleto } </p>
+					<button onClick={logout}>Sair <LogoutIcon style={{ fill: "white", verticalAlign: "middle" }} /></button>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default NavBar;

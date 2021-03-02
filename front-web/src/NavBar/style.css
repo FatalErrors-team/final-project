@@ -1,32 +1,60 @@
-.navbar-container{
-    background-color: #E0E0E0;
-    height: 75px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar {
+	background-color: #263238;
+	display: flex;
+	justify-content: center;
 }
 
-.navbar-container ul{
-    display: flex;
+.navbar__container{
+	height: 75px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
 }
 
-.navbar-container ul li{
-    text-decoration: none;
-    list-style: none;
-    margin-left: 80px;
-    font-size: 20px;
+.navbar__container ul{
+	display: flex;
 }
-.navbar-container ul li a{
-    text-decoration: none;
-    color: #455A64;
-    cursor: pointer;
+
+.navbar__container ul li{
+	text-decoration: none;
+	list-style: none;
+	font-size: 18px;
+	letter-spacing: 1px;
+	margin-right: 20px;
+}
+.navbar__container ul li a {
+	text-decoration: none;
+	color: #aaa;
+	cursor: pointer;
+}
+
+.navbar__container ul li a.active {
+	color: #fff;
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 .usuario__container {
-    margin-right: 10px;
+	display: flex;
+	align-items: center;
+	color: #eee;
+	letter-spacing: 0.5px;
 }
 
-.usuario__container a {
-    cursor: pointer;
-    text-decoration: underline;
+.usuario__container p {
+	display: block;
+	padding-right: 10px;
+	margin-right: 10px;
+	border-right: 1px solid rgba(255, 255, 255, .1);
 }
+
+.usuario__container button {
+	cursor: pointer;
+	border: none;
+	background: none;
+	color: #fff;
+	font-size: 12pt;
+	letter-spacing: 0.5px;
+	outline: 0;
+}
+

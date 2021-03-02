@@ -24,9 +24,9 @@ function LoginBox() {
       <div className="form__container">
         <Login oculto={oculto}/>
         <Cadastro oculto={!oculto} />
-        <a onClick={alterarMetodo}>
+				<button onClick={alterarMetodo}>
           {metodo}
-        </a>
+        </button>
       </div>
       <div className="login__banner">
         <h1>Sua plataforma de gerenciamento de alunos.</h1>

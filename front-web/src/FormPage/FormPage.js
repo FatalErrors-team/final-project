@@ -53,7 +53,7 @@ function FormPage() {
 
     axios({
       method: "POST",
-      url: "http://localhost:8080/alunos",
+			url: "https://boiling-river-79785.herokuapp.com/alunos",
       data: JSON.stringify(formatedData),
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,8 @@ function FormPage() {
       },
     })
       .then((response) => {
-        if (response.status === 201) {
+				if (response.status === 201) {
+					window.location.href = "http://localhost:3000/#lista-de-alunos";
           console.log({ status: true, text: "Salvo!" });
         } else {
           console.log({ status: false, text: "Houve algum erro!" });
@@ -73,9 +74,9 @@ function FormPage() {
   }
   return (
     <>
-      <div className="container">
+      <div className="form__container">
         <FormImage className="form-image" />
-        <h3 className="form-title">INFORME OS DADOS DO ALUNO</h3>
+        <h3 className="form-title">Informe os dados do aluno</h3>
         <form className="form-container" onSubmit={salvar}>
           <input
             className="input-item"
@@ -102,7 +103,7 @@ function FormPage() {
             name="telefone"
             onChange={handleChange}
             required
-            placeholder="Telefone (xx)xxxxx-xxxx"
+            placeholder="Telefone (xx) xxxxx-xxxx"
             pattern="\([1-9]{2}\) \d{4,5}-\d{4}"
           />
           <input
@@ -187,7 +188,7 @@ function FormPage() {
             min="0"
             max="10"
           />
-          <button className="home-btn">SALVAR</button>
+          <button className="home-btn">Salvar</button>
         </form>
       </div>
     </>
