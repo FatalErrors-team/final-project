@@ -12,7 +12,7 @@ import FormPageAtualizar from "./FormPageAtualizar/FormPageAtualizar";
 async function obterAdministrador(setAdministrador) {
 	const response = await axios({
 		method: "GET",
-		url: "http://localhost:8080/administrador",
+		url: "https://boiling-river-79785.herokuapp.com/administrador",
 		headers: {
 			Authorization: localStorage.getItem("token")
 		}

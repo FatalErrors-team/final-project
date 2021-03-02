@@ -11,7 +11,7 @@ function Home() {
 	async function obterAlunos(setEstudantes) {
 		const response = await axios({
 			method: "GET",
-			url: "https://boiling-river-79785.herokuapp.com/",
+			url: "https://boiling-river-79785.herokuapp.com/alunos",
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: localStorage.getItem("token"),
