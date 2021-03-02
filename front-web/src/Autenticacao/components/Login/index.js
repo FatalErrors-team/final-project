@@ -33,8 +33,8 @@ function Login(props) {
         if (response.status === 200) {
           setMessage({ status: true, text: "Você será redirecionado!" });
           localStorage.setItem("token", response.headers.authorization);
-          window.location.href = "http://localhost:3000/"
-        } else {
+					document.location.reload();
+				} else {
           setMessage({ status: false, text: "Verifique suas credenciais!" });
         }
       })

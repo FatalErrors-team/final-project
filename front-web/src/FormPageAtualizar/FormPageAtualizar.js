@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ReactComponent as FormImage } from "./formImage.svg";
 import "./style.css";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 function FormPage() {
 
@@ -24,6 +24,7 @@ function FormPage() {
 	});
 
 	const [formData, setFormData] = useState(form);
+	const history = useHistory();
 
 	function handleChange(e) {
 		setFormData({
@@ -104,7 +105,7 @@ function FormPage() {
 		})
 			.then((response) => {
 				if (response.status === 200) {
-					window.location.href = "http://localhost:3000/#lista-de-alunos";
+					history.push("/#lista-de-alunos");
 					console.log({ status: true, text: "Salvo!" });
 				} else {
 					console.log({ status: false, text: "Houve algum erro!" });

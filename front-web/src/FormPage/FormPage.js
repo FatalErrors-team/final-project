@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { ReactComponent as FormImage } from "./formImage.svg";
+import { useHistory } from 'react-router-dom';
 import "./style.css";
 
 function FormPage() {
@@ -19,6 +20,7 @@ function FormPage() {
   });
 
   const [formData, setFormData] = useState(form);
+	const history = useHistory();
 
   function handleChange(e) {
     setFormData({
@@ -62,8 +64,8 @@ function FormPage() {
     })
       .then((response) => {
 				if (response.status === 201) {
-					window.location.href = "http://localhost:3000/#lista-de-alunos";
-          console.log({ status: true, text: "Salvo!" });
+					history.push("/#lista-de-alunos");
+					console.log({ status: true, text: "Salvo!" });
         } else {
           console.log({ status: false, text: "Houve algum erro!" });
         }
