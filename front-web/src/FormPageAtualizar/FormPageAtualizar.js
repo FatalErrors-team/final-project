@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ReactComponent as FormImage } from "./formImage.svg";
-import "./style.css";
 import { useParams, useHistory } from "react-router-dom";
+import Alert from "../Alert";
+import "./style.css";
+
 
 function FormPage() {
 
@@ -15,15 +17,16 @@ function FormPage() {
 		telefone: "",
 		cep: "",
 		logradouro: "",
-		numero: 0,
+		numero: "",
 		curso: "",
-		nota01: 0,
-		nota02: 0,
-		notaApresentacao: 0,
-		notaTrabalho: 0,
+		nota01: "",
+		nota02: "",
+		notaApresentacao: "",
+		notaTrabalho: "",
 	});
 
 	const [formData, setFormData] = useState(form);
+	const [alerts, setAlerts] = useState([]);
 	const history = useHistory();
 
 	function handleChange(e) {
@@ -33,46 +36,48 @@ function FormPage() {
 		});
 	}
 
-	async function popular(setFormData) {
-		const response = await axios({
-			method: "GET",
-			url: "https://boiling-river-79785.herokuapp.com/alunos/" + id,
-			headers: {
-				Authorization: localStorage.getItem("token")
-			}
-		});
-
-		const data = response.data.data;
-		
-		const modelo = {
-			id: data.id,
-			nome: data.nome,
-			email: data.email,
-			telefone: data.telefone,
-			cep: data.endereco.cep,
-			logradouro: data.endereco.logradouro,
-			numero: data.endereco.numero,
-			curso: data.curso.nome,
-			nota01: data.nota01,
-			nota02: data.nota02,
-			notaApresentacao: data.notaApresentacao,
-			notaTrabalho: data.notaTrabalho,
-		};
-
-		setFormData(modelo);
-
-	}
-
 	useEffect(() => {
-		popular(setFormData);
 
-	}, [])
+		function popular(setFormData) {
+			axios({
+				method: "GET",
+				url: "https://boiling-river-79785.herokuapp.com/alunos/" + id,
+				headers: {
+					Authorization: localStorage.getItem("token")
+				}
+			}).then((response) => {
+				const data = response.data.data;
+
+				const modelo = {
+					id: data.id,
+					nome: data.nome,
+					email: data.email,
+					telefone: data.telefone,
+					cep: data.endereco.cep,
+					logradouro: data.endereco.logradouro,
+					numero: data.endereco.numero,
+					curso: data.curso.nome,
+					nota01: data.nota01,
+					nota02: data.nota02,
+					notaApresentacao: data.notaApresentacao,
+					notaTrabalho: data.notaTrabalho,
+				};
+
+				setFormData(modelo);
+
+			})
+			.catch(() => {
+					history.push("/");
+			})
+		}
+
+		popular(setFormData);
+	}, [setFormData, id, history]);
 
 
 	function salvar(e) {
 		e.preventDefault();
 
-		console.log(formData);
 		const formatedData = {
 			id,
 			nome: formData.nome,
@@ -92,8 +97,6 @@ function FormPage() {
 			notaTrabalho: formData.notaTrabalho,
 		};
 
-		console.log(formatedData);
-
 		axios({
 			method: "PUT",
 			url: "https://boiling-river-79785.herokuapp.com/alunos/" + id,
@@ -105,18 +108,20 @@ function FormPage() {
 		})
 			.then((response) => {
 				if (response.status === 200) {
-					history.push("/#lista-de-alunos");
-					console.log({ status: true, text: "Salvo!" });
+					setAlerts([...alerts, { texto: "Atualizado com sucesso!", tempo: 2000 }]);
 				} else {
-					console.log({ status: false, text: "Houve algum erro!" });
+					setAlerts([...alerts, { texto: "Houve algum erro!", tempo: 2000 }]);
 				}
 			})
 			.catch(() => {
-				console.log({ status: false, text: "Houve algum erro!" });
+					setAlerts([...alerts, { texto: "Houve algum erro!", tempo: 2000 }]);
 			});
 	}
 	return (
 		<>
+			{alerts.map((alert) => {
+				return <Alert texto={alert.texto} tempo={alert.tempo} link={alert.link} />
+			})}
 			<div className="form__container">
 				<FormImage className="form-image" />
 				<h3 className="form-title" id="title">Informe os dados do aluno</h3>
@@ -150,7 +155,6 @@ function FormPage() {
 						onChange={ handleChange }
 						required
 						placeholder="Telefone (xx) xxxxx-xxxx"
-						pattern="\([1-9]{2}\) \d{4,5}-\d{4}"
 					/>
 					<input
 						className="input-item"
@@ -161,7 +165,6 @@ function FormPage() {
 						onChange={ handleChange }
 						required
 						placeholder="CEP xxxxx-xxx"
-						pattern="\d{5}\-\d{2}"
 					/>
 					<input
 						className="input-item"
@@ -242,7 +245,7 @@ function FormPage() {
 						min="0"
 						max="10"
 					/>
-					<button className="home-btn">Salvar</button>
+					<button className="salvar-btn">Salvar</button>
 				</form>
 			</div>
 		</>

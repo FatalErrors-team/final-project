@@ -19,15 +19,12 @@ function Home() {
 		});
 		if (response.status === 200) {
 			setEstudantes(response.data.data);
-		} else {
-			console.log({ status: false, text: "Houve algum erro!" });
 		}
 	}
 
 
 	useEffect(() => {
 		obterAlunos(setEstudantes);
-		console.log(estudantes)
 	}, []);
 
 	return (

@@ -1,12 +1,13 @@
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
+import Alert from "../Alert";
 import "./style.css";
 
 function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 
-	console.log(setEstudantes)
-
 	const [hidden, setHidden] = useState(false);
+	const [alerts, setAlerts] = useState([]);
+
 	const toogleDescription = (e) => {
 		e.preventDefault();
 		if (hidden) {
@@ -31,16 +32,20 @@ function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 		});
 		if (response.status === 204) {
 			funcaoAtualizar(setEstudantes);
+			setAlerts([...alerts, { texto: "Aluno apagado!", tempo: 2000 }]);
 		}
 	}
 
 	return (
 		<>
+			{alerts.map((alert) => {
+				return <Alert texto={alert.texto} tempo={alert.tempo} />
+			})}
 			<div className="card-main-description">
 				<div>{ estudante.nome }</div>
 				<div>{ estudante.curso.nome }</div>
 				<div>{ capitalize(estudante.conceito) }</div>
-				<div><button className="card-btn" onClick={toogleDescription}>{hidden ? "MOSTRAR MENOS" : "MOSTRAR MAIS"}</button></div>
+				<div><button className="card-btn" onClick={toogleDescription}>{hidden ? "Mostrar Menos" : "Mostrar Mais"}</button></div>
 			</div>
 			{ hidden ?
 				<div className="complementar__container">
@@ -67,8 +72,8 @@ function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 						</div>
 						<div className="actions">
 							<div>
-							<button className="btn btn-exclude" onClick={deletar}>EXCLUIR</button>
-								<button className="btn btn-update" onClick={ () => window.location.href = "http://localhost:3000/atualizar-aluno/" + estudante.id + "#title" }>EDITAR</button>
+							<button className="btn btn-exclude" onClick={deletar}>Excluir</button>
+								<button className="btn btn-update" onClick={ () => window.location.href = "http://localhost:3000/atualizar-aluno/" + estudante.id + "#title" }>Editar</button>
 							</div>
 							</div>
 					</div></div>

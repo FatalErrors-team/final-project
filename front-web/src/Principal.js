@@ -8,7 +8,6 @@ import FormPage from "./FormPage/FormPage";
 import FormPageAtualizar from "./FormPageAtualizar/FormPageAtualizar";
 
 
-
 async function obterAdministrador(setAdministrador) {
 	const response = await axios({
 		method: "GET",
@@ -33,7 +32,7 @@ function Principal() {
 	}, []);
 
 	return (
-    <>
+		<>
       <NavBar administrador={administrador}/>
       <Switch>
 				<Route path="/atualizar-aluno/:id">
