@@ -9,7 +9,6 @@ import javax.persistence.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-
 @ApiModel(value = "Curso")
 @Data
 @AllArgsConstructor
@@ -24,6 +23,7 @@ public class Curso {
 
     @ApiModelProperty(value = "Nome do curso", example = "Ciências da Computação")
     private String nome;
+
+    @ApiModelProperty(value = "Disciplina do curso", example = "Cálculo I")
+    private String disciplina;
 }
-
-
